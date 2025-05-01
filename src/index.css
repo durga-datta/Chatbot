@@ -1,0 +1,114 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+
+
+.scrollbar-hidden::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+  
+  .scrollbar-visible:hover::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .scrollbar-visible:hover::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #6366f1, #9333ea);
+    border-radius: 8px;
+  }
+  
+  .scrollbar-visible:hover::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 8px;
+  }
+  
+  /* Dark mode */
+  .dark .scrollbar-visible:hover::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #3b82f6, #06b6d4);
+  }
+  .dark .scrollbar-visible:hover::-webkit-scrollbar-track {
+    background: #1B263B;
+  }
+  
+
+  
+  @keyframes helloText {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .animate-hello-text {
+    animation: helloText 1s ease-out forwards;
+  }
+
+
+
+  @keyframes bounceLetter {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-12px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-bounceLetter {
+    display: inline-block;
+    animation: bounceLetter 1.5s ease-in-out infinite; /* Slower bounce */
+  }
+  
+  @keyframes fadeInContent {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeInContent 1.5s ease-out forwards; /* Slower fade-in */
+  }
+  
+  @keyframes fadeInDelayContent {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-delay {
+    animation: fadeInDelayContent 1.7s ease-out forwards; /* Slower fade-in */
+  }
+  
+  @keyframes bounceSlow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+  
+  .animate-bounce-slow {
+    animation: bounceSlow 2.5s ease-in-out infinite; /* Slower bounce for the bot */
+  }
+  
