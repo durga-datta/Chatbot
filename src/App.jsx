@@ -51,28 +51,43 @@ function App() {
   };
 
   return (
-    <div className="w-screen h-screen bg-white dark:bg-[#0D1B2A] flex items-center justify-center flex-col p-6 gap-6 transition-colors duration-300">
-      <div className="absolute top-4 right-4 z-50">
-        <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
-      </div>
-      <div className="absolute top-5 left-6 z-50">
-        <HomeButton onClick={ ()=> navigate('/')}/>
-      </div>
-      <div className={`flex justify-center mt-4 ${location.pathname !== '/chat' ? ' opacity-0':null}`}>
-  <ClearChatButton />
-</div>
-
-      <Outlet />
-
-      <form
-        onSubmit={handleSubmit(handleForm)}
-        className="w-2/3 mt-6 flex items-center gap-4 bg-gray-200 dark:bg-[#1B263B] p-3 rounded-2xl shadow-lg animate-fade-in"
-      >
-        <Input {...register('userInput')} placeholder='Ask me anything...' />
-        <Button type='submit' value={<IoMdSend />} />
-        <Button onClick={()=> speech.start()} value={<MdKeyboardVoice />} />
-      </form>
+    <div className="w-screen min-h-screen bg-white dark:bg-[#0D1B2A] flex flex-col items-center justify-start p-4 sm:p-6 gap-6 transition-colors duration-300">
+    {/* Dark Mode Toggle */}
+    <div className="absolute top-4 right-4 z-50">
+      <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>
+  
+    {/* Home Button */}
+    <div className="absolute top-4 left-4 z-50">
+      <HomeButton onClick={() => navigate('/')} />
+    </div>
+  
+    {/* Clear Chat Button - only visible on /chat */}
+    <div className={`mt-2 sm:mt-4 ${location.pathname !== '/chat' ? 'opacity-0' : 'opacity-100'} transition-opacity`}>
+      <ClearChatButton />
+    </div>
+  
+    {/* Main Content (Chat or Home via Outlet) */}
+    <div className="w-full max-w-5xl px-2">
+      <Outlet />
+    </div>
+  
+    {/* Chat Input Form */}
+    <form
+  onSubmit={handleSubmit(handleForm)}
+  className="w-full max-w-2xl mt-6 flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-4 
+             bg-gray-200 dark:bg-[#1B263B] p-3 rounded-2xl shadow-lg animate-fade-in"
+>
+  <div className="flex-grow min-w-0">
+    <Input {...register('userInput')} placeholder='Ask me anything...' />
+  </div>
+  <Button type='submit' value={<IoMdSend />} className="flex-shrink-0" />
+  <Button onClick={() => speech.start()} value={<MdKeyboardVoice />} className="flex-shrink-0" />
+</form>
+
+
+  </div>
+  
   );
 }
 
