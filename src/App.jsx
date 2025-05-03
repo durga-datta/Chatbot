@@ -68,7 +68,7 @@ function App() {
     </div>
   
     {/* Main Content (Chat or Home via Outlet) */}
-    <div className="w-full max-w-5xl px-2">
+    <div className="w-full max-w-5xl flex justify-center items-center px-2">
       <Outlet />
     </div>
   
