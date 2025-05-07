@@ -6,7 +6,6 @@ function ChatContainer() {
   const val = useContext(Context);
   const containerRef = useRef(null);
 
-  // Auto-scroll to bottom when new message comes in
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTo({

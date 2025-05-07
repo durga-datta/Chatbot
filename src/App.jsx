@@ -51,6 +51,7 @@ function App() {
   };
 
   return (
+    
     <div className="w-screen max-h-screen bg-white dark:bg-[#0D1B2A] flex flex-col items-center justify-start p-4 sm:p-6 gap-6 transition-colors duration-300">
     {/* Dark Mode Toggle */}
     <div className="absolute top-4 right-4 z-50">
@@ -82,7 +83,7 @@ function App() {
     <Input {...register('userInput')} placeholder='Ask me anything...' />
   </div>
   <Button type='submit' value={<IoMdSend />} className="flex-shrink-0" />
-  <Button onClick={() => speech.start()} value={<MdKeyboardVoice />} className="flex-shrink-0" />
+  <Button type='button' onClick={() => speech.start()} value={<MdKeyboardVoice />} className="flex-shrink-0" />
 </form>
 
 
