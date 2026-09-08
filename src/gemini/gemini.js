@@ -1,10 +1,18 @@
 import { GoogleGenAI } from "@google/genai";
 
-const api = 'AIzaSyD_6012cN7hoaycQIaQmDqDGozkE1gojGA'
-
-const ai = new GoogleGenAI({ apiKey: api });
+function getApiKey() {
+  return import.meta.env.VITE_API_KEY;
+}
 
 async function main(text) {
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    console.error('Missing VITE_GOOGLE_API_KEY in environment');
+    return 'Error: missing API key';
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
+
   const data = `You are created by Durgadatta Sahoo,
    a student at Gangadhar Meher University, pursuing an MCA degree (2023–2025).
     You are a chatbot named 'SIFRA'.You were inspired by your creator's friend named Dibyajyoti to build you(this sentence mention only anyone ask you regarding this otherwise just avoid this line). 
@@ -12,7 +20,7 @@ async function main(text) {
      The answer should be short and sweet. Question is: ${text}`;
 
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-3.8-flash",
     contents: data,
   });
 
